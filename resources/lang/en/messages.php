@@ -1,0 +1,88 @@
+<?php
+
+return [
+    'navigation_label' => 'White Label',
+    'title' => 'White Label',
+    'heading' => 'White Label',
+    'subheading' => 'Brand your panel — logos, colors, fonts, layout, and more.',
+
+    'tabs' => [
+        'brand' => 'Brand',
+        'colors' => 'Colors',
+        'typography' => 'Typography',
+        'layout' => 'Layout',
+        'behavior' => 'Behavior',
+        'footer' => 'Footer',
+        'advanced' => 'Advanced',
+    ],
+
+    'fields' => [
+        'brand_name' => 'App / brand name',
+        'brand_logo' => 'Logo (light)',
+        'dark_brand_logo' => 'Logo (dark)',
+        'brand_logo_height' => 'Logo height',
+        'favicon' => 'Favicon',
+        'font_family' => 'Font family',
+        'color_primary' => 'Primary',
+        'color_gray' => 'Gray',
+        'color_danger' => 'Danger',
+        'color_warning' => 'Warning',
+        'color_success' => 'Success',
+        'color_info' => 'Info',
+        'top_navigation' => 'Top navigation',
+        'topbar' => 'Top bar',
+        'breadcrumbs' => 'Breadcrumbs',
+        'sidebar_collapsible_on_desktop' => 'Collapsible sidebar on desktop',
+        'sidebar_fully_collapsible_on_desktop' => 'Fully collapsible sidebar',
+        'collapsible_navigation_groups' => 'Collapsible navigation groups',
+        'sidebar_width' => 'Sidebar width',
+        'max_content_width' => 'Max content width',
+        'spa' => 'SPA mode',
+        'spa_prefetching' => 'SPA prefetching',
+        'unsaved_changes_alerts' => 'Unsaved changes alerts',
+        'database_notifications' => 'Database notifications',
+        'dark_mode' => 'Allow dark mode',
+        'footer_enabled' => 'Show footer',
+        'footer_text' => 'Footer text (HTML allowed)',
+        'custom_css' => 'Custom CSS',
+    ],
+
+    'helpers' => [
+        'brand_logo_height' => 'CSS length, e.g. 2rem or 40px.',
+        'sidebar_width' => 'CSS length, e.g. 18rem.',
+        'custom_css' => 'Injected into every panel page. @import and javascript: are stripped.',
+        'footer_text' => 'Shown at the bottom of the panel when enabled.',
+        'colors' => 'Leave empty to keep the panel provider defaults.',
+        'database_notifications' => 'Requires the Laravel notifications table and a Notifiable user model.',
+        'spa_prefetching' => 'Only available when SPA mode is enabled.',
+        'font_family' => 'Each option is previewed in its own typeface.',
+    ],
+
+    'checks' => [
+        'notifications_table_missing' => 'The notifications table is missing. Run `php artisan notifications:table` then `php artisan migrate` before enabling database notifications.',
+        'auth_not_notifiable' => 'Your panel auth user model must use the Illuminate\Notifications\Notifiable trait before enabling database notifications.',
+        'database_notifications_disabled' => 'Database notifications were turned off because the environment is not ready.',
+        'database_notifications_unavailable_title' => 'Database notifications unavailable',
+        'spa_prefetch_requires_spa' => 'SPA prefetching was turned off because SPA mode is disabled.',
+        'settings_table_missing' => 'The filament_white_label_settings table is missing. Run `php artisan migrate` to create it.',
+        'settings_table_missing_title' => 'Cannot save white label settings',
+        'panel_missing' => 'No active Filament panel was found.',
+        'load_failed_title' => 'Could not load white label settings',
+        'load_failed_body' => 'Defaults were loaded instead. Check the application log for details.',
+        'save_failed_title' => 'Could not save white label settings',
+        'save_failed_body' => 'Your changes were not saved. Check the application log for details.',
+        'setting_adjusted_title' => 'Setting adjusted for safety',
+    ],
+
+    'actions' => [
+        'save' => 'Save changes',
+        'saved' => 'White label settings saved',
+    ],
+
+    'width' => [
+        'default' => 'Panel default',
+        '7xl' => '7xl',
+        'full' => 'Full',
+        'screen' => 'Screen',
+    ],
+];
