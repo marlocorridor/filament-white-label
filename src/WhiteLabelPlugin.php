@@ -8,6 +8,7 @@ use Filament\FontProviders\BunnyFontProvider;
 use Filament\Panel;
 use Filament\Support\Enums\Width;
 use Filament\Support\Facades\FilamentColor;
+use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Support\HtmlString;
 use MuazzamBuilds\FilamentWhiteLabel\Pages\ManageWhiteLabel;
@@ -122,21 +123,22 @@ class WhiteLabelPlugin implements Plugin
             ->databaseNotifications(fn (): bool => $this->safe(
                 fn (): bool => $manager->databaseNotificationsEnabled($panelId),
                 false,
+            ));
+
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::STYLES_AFTER,
+            fn (): HtmlString => new HtmlString($this->safe(
+                fn (): string => $this->renderCustomCss($manager, $panelId),
+                '',
             ))
-            ->renderHook(
-                PanelsRenderHook::STYLES_AFTER,
-                fn (): HtmlString => new HtmlString($this->safe(
-                    fn (): string => $this->renderCustomCss($manager, $panelId),
-                    '',
-                )),
+        );
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::FOOTER,
+            fn (): string => $this->safe(
+                fn (): string => $this->renderFooter($manager, $panelId),
+                '',
             )
-            ->renderHook(
-                PanelsRenderHook::FOOTER,
-                fn (): string => $this->safe(
-                    fn (): string => $this->renderFooter($manager, $panelId),
-                    '',
-                ),
-            );
+        );
 
         $sidebarWidth = $this->safe(fn (): mixed => $manager->getValue($panelId, 'layout.sidebar_width'), null);
 
